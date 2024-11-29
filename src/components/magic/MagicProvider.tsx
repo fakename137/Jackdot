@@ -39,7 +39,7 @@ const MagicProvider = ({ children }: { children: ReactNode }) => {
     });
 
     setMagic(magic);
-    setWeb3(new Web3((magic as any).rpcProvider));
+    setWeb3(new Web3(magic.rpcProvider as unknown as Web3["currentProvider"]));
   }, []);
 
   const value = useMemo(() => {
