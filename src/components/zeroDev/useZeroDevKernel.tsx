@@ -6,8 +6,10 @@ import { sepolia } from "viem/chains";
 
 export const useZeroDevKernel = () => {
   const { magic } = useMagic();
-  const [kernelClient, setKernelClient] = useState<any>();
-  const [scaAddress, setScaAddress] = useState<any>();
+  const [kernelClient, setKernelClient] = useState<
+    ReturnType<typeof createEcdsaKernelAccountClient> | undefined
+  >(undefined);
+  const [scaAddress, setScaAddress] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const fetchAccount = async () => {

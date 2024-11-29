@@ -1,48 +1,45 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import Divider from '@/components/ui/Divider';
-import { LoginProps } from '@/utils/types';
-import { logout } from '@/utils/common';
-import { useMagic } from '../MagicProvider';
-import Card from '@/components/ui/Card';
-import CardHeader from '@/components/ui/CardHeader';
-import CardLabel from '@/components/ui/CardLabel';
-import Spinner from '@/components/ui/Spinner';
-import { getNetworkName, getNetworkToken } from '@/utils/network';
-import { useZeroDevKernel } from '@/components/zeroDev/useZeroDevKernel';
+import { useCallback, useEffect, useState } from "react";
+import Divider from "@/components/ui/Divider";
+import { LoginProps } from "@/utils/types";
+import { logout } from "@/utils/common";
+import { useMagic } from "../MagicProvider";
+import Card from "@/components/ui/Card2";
+import CardHeader from "@/components/ui/CardHeader";
+import CardLabel from "@/components/ui/CardLabel";
+import Spinner from "@/components/ui/Spinner";
+import { getNetworkName, getNetworkToken } from "@/utils/network";
+import { useZeroDevKernel } from "@/components/zeroDev/useZeroDevKernel";
 
 const UserInfo = ({ token, setToken }: LoginProps) => {
   const { magic, web3 } = useMagic();
   const { kernelClient, scaAddress } = useZeroDevKernel();
 
-  const [magicBalance, setMagicBalance] = useState<string>("...")
-  const [scaBalance, setScaBalance] = useState<string>("...")
-  const [magicAddress] = useState(
-    localStorage.getItem("user")
-  )
-  const [copied, setCopied] = useState('Copy');
+  const [magicBalance, setMagicBalance] = useState<string>("...");
+  const [scaBalance, setScaBalance] = useState<string>("...");
+  const [magicAddress] = useState(localStorage.getItem("user"));
+  const [copied, setCopied] = useState("Copy");
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const [publicAddress] = useState(localStorage.getItem('user'));
-
+  const [publicAddress] = useState(localStorage.getItem("user"));
 
   const getBalance = useCallback(async () => {
     if (magicAddress && web3) {
-      const magicBalance = await web3.eth.getBalance(magicAddress)
+      const magicBalance = await web3.eth.getBalance(magicAddress);
       if (magicBalance == BigInt(0)) {
-        setMagicBalance("0")
+        setMagicBalance("0");
       } else {
-        setMagicBalance(web3.utils.fromWei(magicBalance, "ether"))
+        setMagicBalance(web3.utils.fromWei(magicBalance, "ether"));
       }
     }
     if (scaAddress && web3) {
-      const aaBalance = await web3.eth.getBalance(scaAddress)
+      const aaBalance = await web3.eth.getBalance(scaAddress);
       if (aaBalance == BigInt(0)) {
-        setScaBalance("0")
+        setScaBalance("0");
       } else {
-        setScaBalance(web3.utils.fromWei(aaBalance, "ether"))
+        setScaBalance(web3.utils.fromWei(aaBalance, "ether"));
       }
     }
-  }, [web3, magicAddress, scaAddress])
+  }, [web3, magicAddress, scaAddress]);
 
   const refresh = useCallback(async () => {
     setIsRefreshing(true);
@@ -59,9 +56,9 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
   }, [web3, refresh]);
 
   useEffect(() => {
-    setMagicBalance("...")
-    setScaBalance("...")
-  }, [magic])
+    setMagicBalance("...");
+    setScaBalance("...");
+  }, [magic]);
 
   const disconnect = useCallback(async () => {
     if (magic) {
@@ -70,11 +67,11 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
   }, [magic, setToken]);
 
   const copy = useCallback(() => {
-    if (publicAddress && copied === 'Copy') {
-      setCopied('Copied!');
+    if (publicAddress && copied === "Copy") {
+      setCopied("Copied!");
       navigator.clipboard.writeText(publicAddress);
       setTimeout(() => {
-        setCopied('Copy');
+        setCopied("Copy");
       }, 1000);
     }
   }, [copied, publicAddress]);
@@ -82,7 +79,11 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
   return (
     <Card>
       <CardHeader id="Wallet">Wallet</CardHeader>
-      <CardLabel leftHeader="Status" rightAction={<div onClick={disconnect}>Disconnect</div>} isDisconnect />
+      <CardLabel
+        leftHeader="Status"
+        rightAction={<div onClick={disconnect}>Disconnect</div>}
+        isDisconnect
+      />
       <div className="flex-row">
         <div className="green-dot" />
         <div className="connected">Connected to {getNetworkName()}</div>

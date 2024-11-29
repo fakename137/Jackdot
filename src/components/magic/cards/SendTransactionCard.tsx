@@ -77,13 +77,13 @@ const SendTransaction = () => {
 
       <FormInput
         value={toAddress}
-        onChange={(e: any) => setToAddress(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setToAddress(e.target.value)}
         placeholder="Receiving Address"
       />
       {toAddressError ? <ErrorText>Invalid address</ErrorText> : null}
       <FormInput
         value={amount}
-        onChange={(e: any) => setAmount(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)}
         placeholder={`Amount (${getNetworkToken()})`}
       />
       {amountError ? (
