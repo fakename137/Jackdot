@@ -5,9 +5,12 @@ import SparklesText from "./components/ui/sparkles-text";
 import { useEffect, useState } from "react";
 import Login from "./components/magic/Login";
 import MagicProvider from "./components/magic/MagicProvider";
+import { usePrivy } from "@privy-io/react-auth";
 function App() {
   const [token, setToken] = useState("");
-
+  const { ready, authenticated, login } = usePrivy();
+  // Disable login when Privy is not ready or the user is already authenticated
+  const disableLogin = !ready || (ready && authenticated);
   useEffect(() => {
     setToken(localStorage.getItem("token") ?? "");
   }, [setToken]);
@@ -17,10 +20,12 @@ function App() {
       <div className="flex-row text-center text-white p-4">
         <Meteors number={30} />
         <SparklesText text="Jackdot" className="my-8" />
-        {/* <ShinyButton> Launch App </ShinyButton> */}
-        <MagicProvider>
+        <ShinyButton disabled={disableLogin} onClick={login}>
+          Launch App
+        </ShinyButton>
+        {/* <MagicProvider>
           <Login token={token} setToken={setToken} />
-        </MagicProvider>
+        </MagicProvider> */}
       </div>
     </div>
   );

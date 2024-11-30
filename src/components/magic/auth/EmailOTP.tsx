@@ -29,7 +29,6 @@ const EmailOTP = ({ token, setToken }: LoginProps) => {
         setEmailError(false);
         const token = await magic?.auth.loginWithEmailOTP({
           email,
-          redirectURI: new URL("/wallet", window.location.origin).href,
         });
 
         const metadata = await magic?.user.getMetadata();

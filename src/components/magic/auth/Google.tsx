@@ -1,5 +1,5 @@
 import { magic } from "../magicGoogle";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 
 const Google = () => {
   const handleSocialLogin = async () => {
@@ -21,7 +21,7 @@ const Google = () => {
     <div className="container">
       <h1>Magic + Google</h1>
       <button onClick={handleSocialLogin}>
-        <FcGoogle size={"2.5rem"} />
+        {/* <FcGoogle size={"2.5rem"} /> */}
         Log in with Google
       </button>
     </div>

@@ -3,6 +3,7 @@ export enum Network {
   POLYGON = "polygon",
   ETHEREUM_SEPOLIA = "ethereum-sepolia",
   ETHEREUM = "ethereum",
+  // POLKADOT='';
 }
 let NEXT_PUBLIC_BLOCKCHAIN_NETWORK = "ethereum-sepolia";
 export const getNetworkUrl = () => {
