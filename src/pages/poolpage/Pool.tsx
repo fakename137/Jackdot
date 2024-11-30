@@ -1,7 +1,7 @@
-import Navbar from '@/components/navbar';
-import Meteors from '@/components/ui/meteors';
-import PoolSection from '@/pages/sections/Poolsection';
-import { poolData } from '@/data/poolData';
+import Navbar from "@/components/navbar";
+import Meteors from "@/components/ui/meteors";
+import PoolSection from "@/pages/sections/Poolsection";
+import { poolData } from "@/data/poolData";
 
 function Pool() {
   return (
