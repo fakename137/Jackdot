@@ -9,6 +9,11 @@ import SparklesText from "./ui/sparkles-text";
 import Abi from "../../abi.json";
 // Contract ABI (minimal version for checkContractBalance)
 const CONTRACT_ABI = Abi;
+const USDC_ABI = [
+  "function balanceOf(address owner) view returns (uint256)",
+  "function decimals() view returns (uint8)",
+];
+const USDC_CONTRACT_ADDRESS = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
 
 // Replace with your contract's deployed address
 const CONTRACT_ADDRESS = "0x2D606f8A476027fEC3CA3F4a4cC26CaF6DA93338";
@@ -27,6 +32,28 @@ const Navbar = () => {
       window.location.href = "/";
     },
   });
+  const fetchUSDCBalance = async (address: string) => {
+    try {
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://eth-sepolia.g.alchemy.com/v2/6jQzxWfrgceXad1Zy2aszbR5jxHqPmCj"
+      );
+      const usdcContract = new ethers.Contract(
+        USDC_CONTRACT_ADDRESS,
+        USDC_ABI,
+        provider
+      );
+      const decimals = await usdcContract.decimals();
+
+      const balanceRaw = await usdcContract.balanceOf(address);
+
+      const balance = ethers.utils.formatUnits(balanceRaw, decimals);
+      setUsdcBalance(parseFloat(balance).toFixed(2));
+    } catch (error) {
+      console.error("Error fetching USDC balance:", error);
+
+      setUsdcBalance("0");
+    }
+  };
 
   // Fetch contract balance
   const fetchContractBalance = async () => {
@@ -64,6 +91,7 @@ const Navbar = () => {
     setSmartWalletAddress(smartWallet?.address ?? null);
 
     if (addressToUse) {
+      fetchUSDCBalance(addressToUse);
       // Optionally fetch other balances here
     }
 
@@ -112,11 +140,10 @@ const Navbar = () => {
                     </span>
                     <div className="flex items-center space-x-2">
                       <span className="text-xs text-[#FF0068]">
-                        {/* ${usdcBalance} USDC */}
-                        Total Pool Balance
+                        ${usdcBalance} USDC
                       </span>
                       <span className="text-xs text-[#00FF00]">
-                        {contractBalance} ETH
+                        Total Pool Balance {contractBalance} ETH
                       </span>
                     </div>
                   </div>

@@ -99,7 +99,7 @@ function InvestmentCard({
             className="w-full border-2 border-[#c9fa00] text-[#c9fa00] hover:bg-[#c9fa00]/10 hover:text-[#c9fa00] transition-colors"
             onClick={handleBuyClick}
           >
-            Buy ${buyAmount}
+            Join
           </Button>
           <p className="text-center text-sm text-[#c9fa00]">
             Win Up to ${winAmount}
