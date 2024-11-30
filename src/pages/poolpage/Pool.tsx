@@ -6,15 +6,25 @@ import Dashboard from "@/components/magic/Dashboard";
 import DepositPage from "@/components/deposit-page";
 import { usePrivy } from "@privy-io/react-auth";
 import { Button } from "@/components/ui/button";
-
+import { useWallets } from "@privy-io/react-auth";
 function Pool() {
   const [token, setToken] = useState("");
   const [smartWalletAddress, setSmartWalletAddress] = useState<string | null>(
     null
   );
-  const { user, logout } = usePrivy();
-
+  const [walletAddress, setWalletAddress] = useState<string | null>(null);
+  const { wallets } = useWallets();
+  const { user, logout, authenticated } = usePrivy();
+  // if (!authenticated) {
+  //   window.location.href = "/";
+  // }
+  const onLogout = async () => {
+    await logout();
+    window.location.href = "/";
+  };
   useEffect(() => {
+    const address = wallets?.[0]?.address;
+    setWalletAddress(address ?? null);
     const smartWallet = user?.linkedAccounts.find(
       (account) => account.type === "smart_wallet"
     );
@@ -22,7 +32,6 @@ function Pool() {
     console.log(smartWallet?.address);
     // Logs the smart wallet's address
     console.log(smartWallet?.type);
-
     setToken(localStorage.getItem("token") ?? "");
   }, [setToken, user?.linkedAccounts]);
   return (
@@ -43,9 +52,13 @@ function Pool() {
         <Dashboard token={token} setToken={setToken} />
       </MagicProvider> */}
       <nav className="flex justify-between">
-        <div>{smartWalletAddress}</div>
         <div>
-          <Button onClick={logout} variant={"destructive"}>
+          {smartWalletAddress}
+          <br />
+          {walletAddress}
+        </div>
+        <div>
+          <Button onClick={onLogout} variant={"destructive"}>
             Logout
           </Button>
         </div>
