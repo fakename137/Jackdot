@@ -1,72 +1,61 @@
-'use client';
-import { ethers } from 'ethers';
-import { usePrivy } from '@privy-io/react-auth';
-import { Button } from '@/components/ui/button';
-import { useLogout } from '@privy-io/react-auth';
-import { Wallet, LogOut, Copy, DollarSign } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import SparklesText from './ui/sparkles-text';
+"use client";
+import { ethers } from "ethers";
+import { usePrivy } from "@privy-io/react-auth";
+import { Button } from "@/components/ui/button";
+import { useLogout } from "@privy-io/react-auth";
+import { Wallet, LogOut, Copy, DollarSign } from "lucide-react";
+import { useState, useEffect } from "react";
+import SparklesText from "./ui/sparkles-text";
+import Abi from "../../abi.json";
+// Contract ABI (minimal version for checkContractBalance)
+const CONTRACT_ABI = Abi;
 
-// USDC Contract ABI (minimal version for balanceOf)
-const USDC_ABI = [
-  'function balanceOf(address owner) view returns (uint256)',
-  'function decimals() view returns (uint8)',
-];
-
-// USDC Contract Address (Ethereum Mainnet)
-const USDC_CONTRACT_ADDRESS = '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238';
+// Replace with your contract's deployed address
+const CONTRACT_ADDRESS = "0x2D606f8A476027fEC3CA3F4a4cC26CaF6DA93338";
 
 const Navbar = () => {
   const [smartWalletAddress, setSmartWalletAddress] = useState<string | null>(
     null
   );
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
-  const [usdcBalance, setUsdcBalance] = useState<string>('0');
+  const [usdcBalance, setUsdcBalance] = useState<string>("0");
+  const [contractBalance, setContractBalance] = useState<string>("0");
   const { user, authenticated } = usePrivy();
   const { logout } = useLogout({
     onSuccess: () => {
-      console.log('User logged out');
-      window.location.href = '/';
+      console.log("User logged out");
+      window.location.href = "/";
     },
   });
 
-  // Fetch USDC balance
-  const fetchUSDCBalance = async (address: string) => {
+  // Fetch contract balance
+  const fetchContractBalance = async () => {
     try {
-      // Set up provider (use your preferred RPC endpoint)
       const provider = new ethers.providers.JsonRpcProvider(
-        'https://eth-sepolia.g.alchemy.com/v2/6jQzxWfrgceXad1Zy2aszbR5jxHqPmCj'
+        "https://eth-sepolia.g.alchemy.com/v2/6jQzxWfrgceXad1Zy2aszbR5jxHqPmCj"
       );
 
-      // Create contract instance
-      const usdcContract = new ethers.Contract(
-        USDC_CONTRACT_ADDRESS,
-        USDC_ABI,
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
         provider
       );
 
-      // Get decimals and balance
-      const decimals = await usdcContract.decimals();
-      const balanceRaw = await usdcContract.balanceOf(address);
+      const balance = await contract.checkContractBalance();
 
-      // Format balance
-      const balance = ethers.utils.formatUnits(balanceRaw, decimals);
-
-      // Round to 2 decimal places
-      setUsdcBalance(parseFloat(balance).toFixed(2));
+      // Convert from Wei to Ether
+      setContractBalance(ethers.utils.formatEther(balance));
     } catch (error) {
-      console.error('Error fetching USDC balance:', error);
-
-      setUsdcBalance('0');
+      console.error("Error fetching contract balance:", error);
     }
   };
 
   useEffect(() => {
     const smartWallet = user?.linkedAccounts.find(
-      (account) => account.type === 'smart_wallet'
+      (account) => account.type === "smart_wallet"
     );
     const wallet = user?.linkedAccounts.find(
-      (account) => account.type === 'wallet'
+      (account) => account.type === "wallet"
     );
 
     const addressToUse = smartWallet?.address ?? wallet?.address;
@@ -75,27 +64,28 @@ const Navbar = () => {
     setSmartWalletAddress(smartWallet?.address ?? null);
 
     if (addressToUse) {
-      fetchUSDCBalance(addressToUse);
+      // Optionally fetch other balances here
     }
+
+    // Fetch contract balance on load
+    fetchContractBalance();
   }, [user?.linkedAccounts]);
 
-  // Truncate wallet address for display
   const truncateAddress = (address: string | null) => {
-    if (!address) return 'No Wallet Connected';
+    if (!address) return "No Wallet Connected";
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
-  // Copy address to clipboard
   const copyAddress = () => {
     const addressToCopy = smartWalletAddress || walletAddress;
     if (addressToCopy) {
       navigator.clipboard
         .writeText(addressToCopy)
         .then(() => {
-          console.log('Address copied to clipboard');
+          console.log("Address copied to clipboard");
         })
         .catch((err) => {
-          console.error('Error copying address to clipboard:', err);
+          console.error("Error copying address to clipboard:", err);
         });
     }
   };
@@ -122,7 +112,11 @@ const Navbar = () => {
                     </span>
                     <div className="flex items-center space-x-2">
                       <span className="text-xs text-[#FF0068]">
-                        ${usdcBalance} USDC
+                        {/* ${usdcBalance} USDC */}
+                        Total Pool Balance
+                      </span>
+                      <span className="text-xs text-[#00FF00]">
+                        {contractBalance} ETH
                       </span>
                     </div>
                   </div>
