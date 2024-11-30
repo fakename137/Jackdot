@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       appId="cm40v396h0bwt10cj0m54h0fe"
       config={{
         // Display email and wallet as login methods
-        loginMethods: ["email", "wallet"],
+        loginMethods: ["email", "wallet", "google"],
         // Customize Privy's appearance in your app
         appearance: {
           theme: "light",
