@@ -15,11 +15,18 @@ export default defineConfig({
   ],
   build: {
     outDir: "./docs",
+    rollupOptions: {
+      external: ["@solana/web3.js"], // Mark the library as external
+    },
   },
   base: "",
   resolve: {
     alias: {
+      "@magic-sdk/types": "@magic-sdk/types",
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  optimizeDeps: {
+    include: ["@magic-sdk/types", "@magic-sdk/provider"],
   },
 });

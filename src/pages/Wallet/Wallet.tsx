@@ -4,7 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "@/components/magic/Login";
 import Dashboard from "@/components/magic/Dashboard";
-import MagicDashboardRedirect from "@/components/magic/MagicDashboardRedirect";
+import Google from "@/components/magic/auth/Google";
+// import MagicDashboardRedirect from "@/components/magic/MagicDashboardRedirect";
 
 export default function Wallet() {
   const [token, setToken] = useState("");
@@ -21,7 +22,8 @@ export default function Wallet() {
       ) : (
         <Login token={token} setToken={setToken} />
       )}
-      <MagicDashboardRedirect />
+      <Google />
+      {/* <MagicDashboardRedirect /> */}
     </MagicProvider>
   );
 }

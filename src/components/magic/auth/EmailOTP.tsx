@@ -8,6 +8,7 @@ import Card from "../../ui/Card2";
 import CardHeader from "../../ui/CardHeader";
 import { useState } from "react";
 import FormInput from "@/components/ui/FormInput";
+import ShinyButton from "@/components/ui/shiny-button";
 
 const EmailOTP = ({ token, setToken }: LoginProps) => {
   const { magic } = useMagic();
@@ -26,7 +27,9 @@ const EmailOTP = ({ token, setToken }: LoginProps) => {
       try {
         setLoginInProgress(true);
         setEmailError(false);
-        const token = await magic?.auth.loginWithEmailOTP({ email });
+        const token = await magic?.auth.loginWithEmailOTP({
+          email,
+        });
 
         const metadata = await magic?.user.getMetadata();
 
@@ -56,13 +59,14 @@ const EmailOTP = ({ token, setToken }: LoginProps) => {
         }
       } finally {
         setLoginInProgress(false);
+        window.location.href = "/pool";
       }
     }
   };
 
   return (
     <Card>
-      <CardHeader id="login">Email OTP Login</CardHeader>
+      {/* <CardHeader id="login">Email OTP Login</CardHeader> */}
       <div className="login-method-grid-item-container">
         <FormInput
           onChange={(e) => {
@@ -72,6 +76,7 @@ const EmailOTP = ({ token, setToken }: LoginProps) => {
           placeholder={token.length > 0 ? "Already logged in" : "Email"}
           value={email}
         />
+        <br />
         {emailError && <span className="error">Enter a valid email</span>}
         <button
           className="login-button"
@@ -80,7 +85,9 @@ const EmailOTP = ({ token, setToken }: LoginProps) => {
           }
           onClick={() => handleLogin()}
         >
-          {isLoginInProgress ? <Spinner /> : "Log in / Sign up"}
+          <ShinyButton>
+            {isLoginInProgress ? <Spinner /> : "Launch App"}
+          </ShinyButton>
         </button>
       </div>
     </Card>
