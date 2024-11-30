@@ -1,7 +1,15 @@
 import PredictionsPage from "@/components/predictions-page";
 // import { InvestmentCard } from '@/components/ui/InvestmentCard';
+import { useEffect, useState } from "react";
+import MagicProvider from "@/components/magic/MagicProvider";
+import Dashboard from "@/components/magic/Dashboard";
 
 function Pool() {
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token") ?? "");
+  }, [setToken]);
   return (
     // <div className="min-h-screen bg-gradient-to-t from-[#061734] to-[#000000] flex items-center justify-center">
     //   <div className="w-full max-w-screen-sm px-4">
@@ -15,7 +23,12 @@ function Pool() {
     //     </div>
     //   </div>
     // </div>
-    <PredictionsPage />
+    <div>
+      <MagicProvider>
+        <Dashboard token={token} setToken={setToken} />
+      </MagicProvider>
+      <PredictionsPage />
+    </div>
   );
 }
 export default Pool;

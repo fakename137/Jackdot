@@ -1812,31 +1812,41 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz#4fc56c15c580b9adb7dc3c333a134e540b44bfb1"
   integrity sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==
 
-"@magic-ext/oauth@^15.0.0":
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/@magic-ext/oauth/-/oauth-15.6.0.tgz#13ebd67d6087b65d9b0468d85120e86c8b534aa9"
-  integrity sha512-OBLxdPUvL+kW/DIxH8V5Fp4rjkV7LdFfVkRHdy6dPBhdbJjpD9/XOReNZnWa45OHx7+OOl1OocPtXn9hEAFoyQ==
+"@magic-ext/oauth@11.1.3":
+  version "11.1.3"
+  resolved "https://registry.yarnpkg.com/@magic-ext/oauth/-/oauth-11.1.3.tgz#1166104d48708b5b01f82fda0685e4d34c27cd3e"
+  integrity sha512-c1YUNi+NERx/xQxUx+vTH5dRk0OV3olqrPOmNjlD9JvUlaxJCzztVR5mX7yAcIsvhXe3V7lMCRtUuDD59cpTPg==
   dependencies:
-    crypto-js "^3.3.0"
+    "@magic-sdk/types" "^15.1.2"
 
-"@magic-sdk/commons@^17.5.0":
-  version "17.5.0"
-  resolved "https://registry.yarnpkg.com/@magic-sdk/commons/-/commons-17.5.0.tgz#4f9310936264a610d89b2cbd999f29f6a280ba17"
-  integrity sha512-2KdLT6KTNnToOuTb92a/Ur/zGfV8/M89W+wqrcumcSmdOOyD65C80q2Gd70OF2+HZEOPEfBp8vBTfOGyRSb8fg==
+"@magic-ext/webauthn@^22.18.0":
+  version "22.18.0"
+  resolved "https://registry.yarnpkg.com/@magic-ext/webauthn/-/webauthn-22.18.0.tgz#f681946739a78f6588a5a14c8052021695e29363"
+  integrity sha512-argdwRR1tEwBigtWqaaKegSxIoHxke4FjEqxfQ8e/LWyxSZFVr5QzFjDTEbBy4wDAx5HpKjjc+s4P10KBs/+rQ==
 
-"@magic-sdk/provider@^21.5.0":
-  version "21.5.0"
-  resolved "https://registry.yarnpkg.com/@magic-sdk/provider/-/provider-21.5.0.tgz#5116c291dc88de89c516c4d3e9dce69024b8c172"
-  integrity sha512-q2UAww4Hv8qDg+GYUqmUhdLPL5lfmYXpD6HN1IMI1HBU/SG2hLMVs/28u+RrCC1GddrqTTDal9GXONd3OHurHA==
+"@magic-sdk/commons@^13.1.2":
+  version "13.4.0"
+  resolved "https://registry.yarnpkg.com/@magic-sdk/commons/-/commons-13.4.0.tgz#6217fd8e7346f5029c7c584d98578c36d26ec3db"
+  integrity sha512-F6XG0r0XEZmGB8OTPNFrRz6IgDhb39YxUrG2n/4hajb0vJuA28QjoexG/d7f6Rklvxq9oIBR1wMuqUzGs3oSnA==
+
+"@magic-sdk/provider@^17.1.2":
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/@magic-sdk/provider/-/provider-17.4.0.tgz#f22174899f36664fcebd47781b3c497479abe671"
+  integrity sha512-DvroR5qCumGtS8TY8wr/4bI9bvkUD222ghbNTsu9MFAgybksc6/ARUX8ttjFZVQXMIIe07PpZroxnxI+ih5mlA==
   dependencies:
-    "@magic-sdk/types" "^17.3.0"
+    "@magic-sdk/types" "^15.4.0"
     eventemitter3 "^4.0.4"
     web3-core "1.5.2"
 
-"@magic-sdk/types@^17.3.0":
-  version "17.3.0"
-  resolved "https://registry.yarnpkg.com/@magic-sdk/types/-/types-17.3.0.tgz#66fbcc4d9e31eae7b687059d4111565503179289"
-  integrity sha512-0mTFr1qDJ94pOJkFu1oZ/s2KnV7lHgILvWuFh7fs7ugyn7z9M7euP9g+Bv+kEdZ6ja4QlNi+UR0OryaXowv75w==
+"@magic-sdk/types@^15.1.2", "@magic-sdk/types@^15.4.0":
+  version "15.8.0"
+  resolved "https://registry.yarnpkg.com/@magic-sdk/types/-/types-15.8.0.tgz#d54dc8221bb0f69c74ff96d486535ce150c2c04b"
+  integrity sha512-xLQsBAg2JXUn39dRfZW6Z3LUT50qz/3pg6R658oVBr4LbJd/L8iAR0zCRmjLLNXzfYm1RkJYZWuHaxjJgKlkSA==
+
+"@magic-sdk/types@^24.16.0":
+  version "24.16.0"
+  resolved "https://registry.yarnpkg.com/@magic-sdk/types/-/types-24.16.0.tgz#9895f51ca73edcdf73402ddc99ba0b8ce1d3ec3c"
+  integrity sha512-mc0edHS4CQLsO8hmIYw9kH0yDHXprv4LmDUhPppJ3QtBiHD7ErgVRdurupeyMXFEPccqa2aJzNX3VW/RinIBMQ==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
@@ -4400,11 +4410,6 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.3"
     randombytes "^2.1.0"
     randomfill "^1.0.4"
-
-crypto-js@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
-  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
 
 crypto-random-string@^2.0.0:
   version "2.0.0"
@@ -7784,14 +7789,14 @@ lucide-react@^0.462.0:
   resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.462.0.tgz#cb95b1dde558be51b7ae247290f7bb5f197880bf"
   integrity sha512-NTL7EbAao9IFtuSivSZgrAh4fZd09Lr+6MTkqIxuHaH2nnYiYIzXPo06cOxHg9wKLdj6LL8TByG4qpePqwgx/g==
 
-magic-sdk@21.5.0:
-  version "21.5.0"
-  resolved "https://registry.yarnpkg.com/magic-sdk/-/magic-sdk-21.5.0.tgz#7a504a92e277e34889a7dad3a6a057d6f8080bd0"
-  integrity sha512-LNSTJGOO1wtJSwoEnO8ehH3RePdYc3lc0pD+SGZWyY78Ly6CgNE15lILBGJvpdaZjZd6wVqDYOf6Hh+PayuNKg==
+magic-sdk@17.1.3:
+  version "17.1.3"
+  resolved "https://registry.yarnpkg.com/magic-sdk/-/magic-sdk-17.1.3.tgz#6eca849a72bc332e4aba49c9941a9a6242c1074f"
+  integrity sha512-+Khhahtmf5CXqovPD9ge18+dvp4/c3XKae4pEuWLs1EHoly0ZNGKzYESPi1jmrak79VkC8lAHHrxm/3AGDlINA==
   dependencies:
-    "@magic-sdk/commons" "^17.5.0"
-    "@magic-sdk/provider" "^21.5.0"
-    "@magic-sdk/types" "^17.3.0"
+    "@magic-sdk/commons" "^13.1.2"
+    "@magic-sdk/provider" "^17.1.2"
+    "@magic-sdk/types" "^15.1.2"
     localforage "^1.7.4"
 
 magic-string@^0.25.0, magic-string@^0.25.7:
@@ -9406,6 +9411,11 @@ react-error-overlay@^6.0.11:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
+
+react-icons@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.3.0.tgz#ccad07a30aebd40a89f8cfa7d82e466019203f1c"
+  integrity sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==
 
 react-is@^16.13.1:
   version "16.13.1"

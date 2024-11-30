@@ -19,7 +19,11 @@ export default defineConfig({
   base: "",
   resolve: {
     alias: {
+      "@magic-sdk/types": "@magic-sdk/types",
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  optimizeDeps: {
+    include: ["@magic-sdk/types", "@magic-sdk/provider"],
   },
 });

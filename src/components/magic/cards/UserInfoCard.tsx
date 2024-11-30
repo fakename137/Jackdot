@@ -3,13 +3,13 @@ import Divider from "@/components/ui/Divider";
 import { LoginProps } from "@/utils/types";
 import { logout } from "@/utils/common";
 import { useMagic } from "../MagicProvider";
-import Card from "@/components/ui/Card2";
+import { Card } from "@/components/ui/card";
 import CardHeader from "@/components/ui/CardHeader";
 import CardLabel from "@/components/ui/CardLabel";
 import Spinner from "@/components/ui/Spinner";
 import { getNetworkName, getNetworkToken } from "@/utils/network";
 import { useZeroDevKernel } from "@/components/zeroDev/useZeroDevKernel";
-
+import { Copy } from "lucide-react";
 const UserInfo = ({ token, setToken }: LoginProps) => {
   const { magic, web3 } = useMagic();
   const { kernelClient, scaAddress } = useZeroDevKernel();
@@ -64,6 +64,7 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
     if (magic) {
       await logout(setToken, magic);
     }
+    window.location.href = "/";
   }, [magic, setToken]);
 
   const copy = useCallback(() => {
@@ -77,56 +78,35 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
   }, [copied, publicAddress]);
 
   return (
-    <Card>
-      <CardHeader id="Wallet">Wallet</CardHeader>
-      <CardLabel
-        leftHeader="Status"
-        rightAction={<div onClick={disconnect}>Disconnect</div>}
-        isDisconnect
-      />
-      <div className="flex-row">
-        <div className="green-dot" />
-        <div className="connected">Connected to {getNetworkName()}</div>
+    <nav className="bg-gray-800 text-white p-4 shadow-lg flex items-center justify-between">
+      {/* Network Status */}
+      <div className="flex items-center">
+        <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+        <span className="text-sm">Connected to {getNetworkName()}</span>
       </div>
-      <Divider />
-      <CardLabel
-        leftHeader="Addresses"
-        rightAction={
-          !magicAddress ? <Spinner /> : <div onClick={copy}>{copied}</div>
-        }
-      />
-      <div className="flex flex-col gap-2">
-        <div className="code">
+
+      {/* Address Section */}
+      <div className="flex items-center space-x-2">
+        <span className="text-sm">
           Magic:{" "}
-          {magicAddress?.length == 0 ? "Fetching address..." : magicAddress}
-        </div>
-        <div className="code">
-          Smart Contract Account:{" "}
-          {scaAddress?.length == 0 ? "Fetching address..." : scaAddress}
-        </div>
+          {magicAddress ? `${magicAddress.slice(0, 6)}...` : "Fetching..."}
+        </span>
+        <button
+          onClick={copy}
+          className="text-blue-500 hover:underline flex items-center"
+        >
+          <Copy />
+        </button>
       </div>
-      <Divider />
-      <CardLabel
-        leftHeader="Balance"
-        rightAction={
-          isRefreshing ? (
-            <div className="loading-container">
-              <Spinner />
-            </div>
-          ) : (
-            <div onClick={refresh}>Refresh</div>
-          )
-        }
-      />
-      <div className="flex flex-col gap-2">
-        <div className="code">
-          Magic: {magicBalance.substring(0, 7)} {getNetworkToken()}
-        </div>
-        <div className="code">
-          AA: {scaBalance.substring(0, 7)} {getNetworkToken()}
-        </div>
-      </div>
-    </Card>
+
+      {/* Disconnect Button */}
+      <button
+        onClick={disconnect}
+        className="text-sm bg-red-600 px-3 py-1 rounded hover:bg-red-700"
+      >
+        Disconnect
+      </button>
+    </nav>
   );
 };
 
