@@ -2,13 +2,13 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 10000;
+  z-index: 1000;
   text-align: right;
 }
 
 .fixed-div img {
   width: 60px;
-  height: 60px;
+  height: 16rem;
   margin-top: 4px;
   border-radius: 50%;
   color: #fff;
@@ -23,7 +23,7 @@
 }
 
 .chat {
-  height: min(570px, 90vh - 100px);
+  /* height: min(570px, 90vh - 100px); */
   width: min(400px, 100vw - 60px);
   overflow: hidden;
   border-radius: 0.625em;
@@ -44,5 +44,5 @@
 }
 
 .chat-show {
-  display: block;
+  /* display: block; */
 }

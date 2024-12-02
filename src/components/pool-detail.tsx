@@ -23,6 +23,7 @@ export default function PoolDetail() {
     "2023-12-20",
     "2023-12-22",
   ];
+
   useEffect(() => {
     const smartWallet = user?.linkedAccounts.find(
       (account) => account.type === "smart_wallet"
@@ -51,15 +52,16 @@ export default function PoolDetail() {
 
     fetchPrices();
   }, [user?.linkedAccounts]);
+
   return (
     <>
       <Navbar />
 
-      <div className="h-full w-full dark:bg-black bg-white  dark:bg-dot-white/[0.8] bg-dot-black/[0.5] relative flex items-center justify-center">
-        {/* * Radial gradient for the container to give a faded look  */}
+      <div className="h-full w-full dark:bg-black bg-white dark:bg-dot-white/[0.8] bg-dot-black/[0.5] relative flex items-center justify-center">
+        {/* * Radial gradient for the container to give a faded look */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <p className="font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
-          <div className="pt-40 min-h-screen bg-gradient-to-b from-black to-gray-900 p-6 text-white">
+          <div className="max-w-4xl pt-40 min-h-screen bg-gradient-to-b from-black to-gray-900 p-6 text-white">
             <div className="grid grid-cols-12 gap-12 w-full mx-auto">
               {/* Line Chart Card */}
               <MotionCard
@@ -116,7 +118,6 @@ export default function PoolDetail() {
                   ></motion.div>
                 </div>
               </MotionCard>
-              <GrillChat />
 
               {/* Community Chat */}
               {/* <MotionCard
@@ -124,9 +125,9 @@ export default function PoolDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-              >  */}
-              {/* <h3 className="font-semibold mb-4">Community Chats</h3>
-                <ScrollArea className="h-[300px] pr-4">
+              > */}
+              {/* <h3 className="font-semibold mb-4">Community Chats</h3> */}
+              {/* <ScrollArea className="h-[300px] pr-4">
                   <div className="space-y-4">
                     {Array(6)
                       .fill(null)
@@ -143,8 +144,8 @@ export default function PoolDetail() {
                         </motion.div>
                       ))}
                   </div>
-                </ScrollArea>
-                <div className="mt-4 flex gap-2">
+                </ScrollArea> */}
+              {/* <div className="mt-4 flex gap-2">
                   <Input
                     placeholder="Type your message..."
                     className="bg-background backdrop-blur-lg"
@@ -197,6 +198,11 @@ export default function PoolDetail() {
             </div>
           </div>
         </p>
+      </div>
+
+      {/* Positioned GrillChat component */}
+      <div className="absolute bottom-0 right-0 p-4 z-[100]">
+        <GrillChat />
       </div>
     </>
   );
