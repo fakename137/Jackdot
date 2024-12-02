@@ -41,7 +41,7 @@ const GrillChat = () => {
             enableInputAutofocus: true,
           },
         },
-        theme: "light",
+        theme: "dark",
       };
 
       if (window.GRILL) {
@@ -58,7 +58,7 @@ const GrillChat = () => {
     <div className="fixed-div">
       <div
         id="grill"
-        className={`chat ${isChatVisible ? "chat-show" : ""}`}
+        className={`h-[25rem] chat ${isChatVisible ? "chat-show" : ""}`}
       ></div>
       <img
         id="grill-toggle"
