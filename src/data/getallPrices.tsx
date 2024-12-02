@@ -13,7 +13,7 @@ export const getAllPrices = async (): Promise<number[]> => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     // Request account access if needed
-    await window.ethereum.request({ method: "eth_requestAccounts" });
+    // await window.ethereum.request({ method: "eth_requestAccounts" });
 
     // Get signer to interact with the contract
     const signer = provider.getSigner();
