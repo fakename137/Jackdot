@@ -8,12 +8,13 @@ import { useEffect, useState } from "react";
 import Navbar from "./navbar";
 import { LineData } from "lightweight-charts";
 import { getAllPrices } from "../data/getallPrices";
+import { usePrivy } from "@privy-io/react-auth";
 const MotionCard = motion(Card);
 
 export default function PoolDetail() {
   const [chartData, setChartData] = useState<LineData[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [prices, setPrices] = useState<number[]>([]);
+  const { user } = usePrivy();
   const staticDates = [
     "2023-12-01",
     "2023-12-09",
@@ -22,9 +23,18 @@ export default function PoolDetail() {
     "2023-12-22",
   ];
   useEffect(() => {
+    const smartWallet = user?.linkedAccounts.find(
+      (account) => account.type === "smart_wallet"
+    );
+    const wallet = user?.linkedAccounts.find(
+      (account) => account.type === "wallet"
+    );
+
+    const addressToUse = smartWallet?.address ?? wallet?.address ?? "";
+    console.log("account to use", addressToUse);
     const fetchPrices = async () => {
       try {
-        const fetchedPrices = await getAllPrices();
+        const fetchedPrices = await getAllPrices(addressToUse);
 
         // Map static dates to fetched prices
         const updatedChartData = staticDates.map((date, index) => ({
@@ -34,12 +44,12 @@ export default function PoolDetail() {
 
         setChartData(updatedChartData);
       } catch (err) {
-        setError("Failed to fetch prices. Please try again.");
+        // setError("Failed to fetch prices. Please try again.");
       }
     };
 
     fetchPrices();
-  }, []);
+  }, [user?.linkedAccounts]);
   return (
     <>
       <Navbar />

@@ -1,22 +1,24 @@
 import { ethers } from "ethers";
 import Abi from "../../abi.json";
+
 const CONTRACT_ADDRESS = "0xc618f702a7ceE784357ddC9c5977FFA81d60fd4b";
 const CONTRACT_ABI = Abi;
 
-export const getAllPrices = async (): Promise<number[]> => {
-  if (!window.ethereum) {
-    throw new Error("MetaMask is not installed");
+export const getAllPrices = async (
+  smartWalletAddress: string
+): Promise<number[]> => {
+  if (!smartWalletAddress) {
+    throw new Error("Smart wallet address is not available");
   }
 
   try {
-    // Create a provider linked to MetaMask
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // Create a provider linked to the Alchemy RPC or MetaMask
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://eth-sepolia.g.alchemy.com/v2/6jQzxWfrgceXad1Zy2aszbR5jxHqPmCj"
+    );
 
-    // Request account access if needed
-    // await window.ethereum.request({ method: "eth_requestAccounts" });
-
-    // Get signer to interact with the contract
-    const signer = provider.getSigner();
+    // Use the smart wallet address as the signer
+    const signer = provider.getSigner(smartWalletAddress);
 
     // Initialize the contract
     const contract = new ethers.Contract(
