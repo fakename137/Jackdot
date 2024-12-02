@@ -1,20 +1,20 @@
-import React from 'react'
-
+import React from "react";
+import { Input } from "./input";
 interface Props {
-	value: string
-	onChange: (e: any) => void
-	placeholder: string
+  value: string;
+  onChange: (e: any) => void;
+  placeholder: string;
 }
 
-const FormInput = ({value, onChange, placeholder}: Props) => {
+const FormInput = ({ value, onChange, placeholder }: Props) => {
   return (
-    <input
-      className='form-input'
+    <Input
+      className="form-input"
       value={value}
       onChange={onChange}
       placeholder={placeholder}
     />
-  )
-}
+  );
+};
 
-export default FormInput
+export default FormInput;

@@ -1,31 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export interface ProgressState {
-  current: number;
-  total: number;
-  percentage: number;
-}
+export function useProgress() {
+  const [progress, setProgress] = useState(0);
 
-export function useProgress(
-  initialCurrent: number = 9,
-  initialTotal: number = 10
-) {
-  const [progress, setProgress] = useState<ProgressState>({
-    current: initialCurrent,
-    total: initialTotal,
-    percentage: (initialCurrent / initialTotal) * 100,
-  });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev >= 100 ? 0 : prev + 1));
+    }, 100);
 
-  const updateProgress = (current: number) => {
-    setProgress((prev) => ({
-      ...prev,
-      current,
-      percentage: (current / prev.total) * 100,
-    }));
-  };
+    return () => clearInterval(interval);
+  }, []);
 
-  return {
-    progress,
-    updateProgress,
-  };
+  return { progress };
 }

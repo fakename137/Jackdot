@@ -1,0 +1,101 @@
+// import { PoolData } from "@/types/pool";
+
+// interface PoolDataStructure {
+//   tenMembers: PoolData[];
+//   hundredMembers: PoolData[];
+// }
+
+export const PoolData = {
+  tenMembers: [
+    {
+      id: "10m-1000",
+      amount: 1000,
+      multiplier: { min: 1.8, max: 2.0 },
+      buyAmount: 200,
+      winAmount: 400,
+      currentAmount: 400,
+      targetAmount: 1000,
+      currentPeople: 4,
+      targetPeople: 10,
+    },
+    {
+      id: "10m-2000",
+      amount: 2000,
+      multiplier: { min: 1.7, max: 1.9 },
+      buyAmount: 400,
+      winAmount: 760,
+      currentAmount: 800,
+      targetAmount: 2000,
+      currentPeople: 6,
+      targetPeople: 10,
+    },
+    {
+      id: "10m-3000",
+      amount: 3000,
+      multiplier: { min: 1.6, max: 1.8 },
+      buyAmount: 600,
+      winAmount: 1080,
+      currentAmount: 1200,
+      targetAmount: 3000,
+      currentPeople: 5,
+      targetPeople: 10,
+    },
+    {
+      id: "10m-5000",
+      amount: 5000,
+      multiplier: { min: 1.5, max: 1.7 },
+      buyAmount: 1000,
+      winAmount: 1700,
+      currentAmount: 2000,
+      targetAmount: 5000,
+      currentPeople: 3,
+      targetPeople: 10,
+    },
+  ],
+  hundredMembers: [
+    {
+      id: "100m-10000",
+      amount: 10000,
+      multiplier: { min: 1.4, max: 1.6 },
+      buyAmount: 100,
+      winAmount: 160,
+      currentAmount: 4000,
+      targetAmount: 10000,
+      currentPeople: 40,
+      targetPeople: 100,
+    },
+    {
+      id: "100m-20000",
+      amount: 20000,
+      multiplier: { min: 1.3, max: 1.5 },
+      buyAmount: 200,
+      winAmount: 300,
+      currentAmount: 8000,
+      targetAmount: 20000,
+      currentPeople: 35,
+      targetPeople: 100,
+    },
+    {
+      id: "100m-30000",
+      amount: 30000,
+      multiplier: { min: 1.2, max: 1.4 },
+      buyAmount: 300,
+      winAmount: 420,
+      currentAmount: 15000,
+      targetAmount: 30000,
+      currentPeople: 45,
+      targetPeople: 100,
+    },
+    {
+      id: "100m-50000",
+      amount: 50000,
+      multiplier: { min: 1.1, max: 1.3 },
+      buyAmount: 500,
+      winAmount: 650,
+      currentAmount: 25000,
+      targetAmount: 50000,
+      currentPeople: 50,
+      targetPeople: 100,
+    },
+  ],
+};

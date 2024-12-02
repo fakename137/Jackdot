@@ -10,7 +10,6 @@ import {
   useState,
 } from "react";
 import { Web3 } from "web3";
-
 export type Magic = MagicBase<OAuthExtension[]>;
 
 type MagicContextType = {

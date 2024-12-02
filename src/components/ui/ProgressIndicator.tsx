@@ -1,25 +1,21 @@
-import { Progress } from '@/components/ui/progress';
-import type { ProgressState } from '@/hooks/useProgress';
+import { cn } from '@/lib/utils';
 
 interface ProgressIndicatorProps {
-  progress: ProgressState;
+  progress: number;
 }
 
 export function ProgressIndicator({ progress }: ProgressIndicatorProps) {
   return (
-    <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span className="text-emerald-500">
-          {progress.current}/{progress.total}
-        </span>
-        <span className="text-muted-foreground">729/1000</span>
-      </div>
-      <Progress value={progress.percentage} className="h-2 bg-emerald-100">
-        <div
-          className="h-full bg-emerald-500 rounded-full transition-all"
-          style={{ width: `${progress.percentage}%` }}
-        />
-      </Progress>
+    <div className="w-full bg-white/20 rounded-full h-2.5">
+      <div
+        className={cn(
+          'h-2.5 rounded-full transition-all duration-300',
+          'bg-[#ff0068]'
+        )}
+        style={{ width: `${progress}%` }}
+      />
     </div>
   );
 }
+
+export default ProgressIndicator;

@@ -1,21 +1,29 @@
-import PredictionsPage from "@/components/predictions-page";
-// import { InvestmentCard } from '@/components/ui/InvestmentCard';
+import Navbar from "@/components/navbar";
+import Meteors from "@/components/ui/meteors";
+import PoolSection from "@/pages/sections/Poolsection";
+import { PoolData } from "@/data/poolData";
 
 function Pool() {
   return (
-    // <div className="min-h-screen bg-gradient-to-t from-[#061734] to-[#000000] flex items-center justify-center">
-    //   <div className="w-full max-w-screen-sm px-4">
-    //     <h1 className="text-lg font-bold text-gray-100 mb-8 text-center">
-    //       Investment Pool
-    //     </h1>
-    //     <div className="flex flex-col items-center space-y-6">
-    //       <InvestmentCard />
-    //       <InvestmentCard />
-    //       <InvestmentCard />
-    //     </div>
-    //   </div>
-    // </div>
-    <PredictionsPage />
+    <div className="bg-gradient-to-t from-[#061734] to-[#000000] min-h-screen">
+      <Navbar />
+      <Meteors number={30} />
+      <main className="container mx-auto px-4 pt-40 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <PoolSection
+            title="Members Pool"
+            description="Join a smaller, exclusive pool with higher returns"
+            pools={PoolData.tenMembers}
+          />
+          <PoolSection
+            title="Members Pool"
+            description="Join our larger community pool with stable returns"
+            pools={PoolData.hundredMembers}
+          />
+        </div>
+      </main>
+    </div>
   );
 }
+
 export default Pool;
