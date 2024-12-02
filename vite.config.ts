@@ -14,7 +14,7 @@ export default defineConfig({
     }),
   ],
   build: {
-    outDir: "./docs",
+    outDir: "./dist",
     rollupOptions: {
       external: ["@solana/web3.js"], // Mark the library as external
     },
