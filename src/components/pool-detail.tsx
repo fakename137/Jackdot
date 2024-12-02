@@ -10,6 +10,7 @@ import { LineData } from "lightweight-charts";
 import { getAllPrices } from "../data/getallPrices";
 import { usePrivy } from "@privy-io/react-auth";
 import GrillChat from "./Chat/GrillChat";
+import PriceFetcher from "@/prices";
 const MotionCard = motion(Card);
 
 export default function PoolDetail() {
@@ -33,7 +34,6 @@ export default function PoolDetail() {
     );
 
     const addressToUse = smartWallet?.address ?? wallet?.address ?? "";
-    console.log("account to use", addressToUse);
     const fetchPrices = async () => {
       try {
         const fetchedPrices = await getAllPrices(addressToUse);
@@ -56,7 +56,6 @@ export default function PoolDetail() {
   return (
     <>
       <Navbar />
-
       <div className="h-full w-full dark:bg-black bg-white dark:bg-dot-white/[0.8] bg-dot-black/[0.5] relative flex items-center justify-center">
         {/* * Radial gradient for the container to give a faded look */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
@@ -87,7 +86,8 @@ export default function PoolDetail() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <div className="flex flex-col items-center gap-4">
+                <PriceFetcher />
+                {/* <div className="flex flex-col items-center gap-4">
                   <h2 className="text-2xl font-bold">Win 4x Bet</h2>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -99,7 +99,6 @@ export default function PoolDetail() {
                     </Button>
                   </motion.div>
                 </div>
-                {/* Animated border */}
                 <div className="absolute inset-0 rounded-lg pointer-events-none">
                   <motion.div
                     className="absolute inset-0 border-2 border-[#FF0068] rounded-lg"
@@ -116,7 +115,7 @@ export default function PoolDetail() {
                       repeatType: "reverse",
                     }}
                   ></motion.div>
-                </div>
+                </div> */}
               </MotionCard>
 
               {/* Community Chat */}
