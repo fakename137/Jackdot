@@ -9,6 +9,7 @@ import Navbar from "./navbar";
 import { LineData } from "lightweight-charts";
 import { getAllPrices } from "../data/getallPrices";
 import { usePrivy } from "@privy-io/react-auth";
+import GrillChat from "./Chat/GrillChat";
 const MotionCard = motion(Card);
 
 export default function PoolDetail() {
@@ -115,15 +116,16 @@ export default function PoolDetail() {
                   ></motion.div>
                 </div>
               </MotionCard>
+              <GrillChat />
 
               {/* Community Chat */}
-              <MotionCard
-                className="col-span-12 md:col-span-6 p-6 backdrop-blur-lg bg-white/10 border border-white/20 rounded-lg shadow-lg"
+              {/* <MotionCard
+                className="col-span-12 md:col-span-6 /p-6 backdrop-blur-lg bg-white/10 border border-white/20 rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <h3 className="font-semibold mb-4">Community Chats</h3>
+              >  */}
+              {/* <h3 className="font-semibold mb-4">Community Chats</h3>
                 <ScrollArea className="h-[300px] pr-4">
                   <div className="space-y-4">
                     {Array(6)
@@ -156,22 +158,12 @@ export default function PoolDetail() {
                       Send
                     </Button>
                   </motion.div>
-                </div>
-
-                {/* Grill Chat Widget */}
-                <div className="fixed bottom-5 right-5 z-50">
-                  <button
-                    className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center shadow-xl text-white"
-                    onClick={() => window.GRILL.toggleWidget()} // Toggle the widget visibility
-                  >
-                    <span className="text-xl">💬</span> {/* Chat icon */}
-                  </button>
-                </div>
-              </MotionCard>
+                </div> */}
+              {/* </MotionCard> */}
 
               {/* Transaction History */}
               <MotionCard
-                className="col-span-12 md:col-span-6 p-6 backdrop-blur-lg bg-white/10 border border-white/20 rounded-lg shadow-lg"
+                className="col-span-12 md:col-span-12 p-6 backdrop-blur-lg bg-white/10 border border-white/20 rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}

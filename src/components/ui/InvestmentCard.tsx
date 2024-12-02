@@ -18,7 +18,7 @@ interface InvestmentCardProps {
 function InvestmentCard({
   amount,
   multiplier,
-  buyAmount,
+  // buyAmount,
   winAmount,
 }: InvestmentCardProps) {
   const { progress } = useProgress();
