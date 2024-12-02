@@ -10,6 +10,7 @@ import Pool from "./pages/poolpage/Pool.tsx";
 import { PrivyProvider } from "@privy-io/react-auth";
 import { SmartWalletsProvider } from "@privy-io/react-auth/smart-wallets";
 import Details from "./pages/pooldetailpage/details.tsx";
+import AdminPanel from "./pages/admin/admin.tsx";
 WebApp.ready();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="/pool" element={<Pool />} />
               {/* <Route path="/wallet" element={<Wallet />} /> */}
               <Route path="/pooldetail" element={<Details />} />
+              <Route path="/admin" element={<AdminPanel />} />
             </Routes>
           </div>
         </BrowserRouter>
