@@ -1,5 +1,5 @@
-import { PoolData } from '../../data/poolData';
-import InvestmentCard from '@/components/ui/InvestmentCard';
+import { PoolData } from "../../data/poolData";
+import InvestmentCard from "@/components/ui/InvestmentCard";
 
 interface PoolSectionProps {
   title: string;
