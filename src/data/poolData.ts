@@ -1,4 +1,4 @@
-import { PoolData } from '@/types/pool';
+import { PoolData } from "@/types/pool";
 
 interface PoolDataStructure {
   tenMembers: PoolData[];
@@ -8,7 +8,7 @@ interface PoolDataStructure {
 export const poolData: PoolDataStructure = {
   tenMembers: [
     {
-      id: '10m-1000',
+      id: "10m-1000",
       amount: 1000,
       multiplier: { min: 1.8, max: 2.0 },
       buyAmount: 200,
@@ -19,7 +19,7 @@ export const poolData: PoolDataStructure = {
       targetPeople: 10,
     },
     {
-      id: '10m-2000',
+      id: "10m-2000",
       amount: 2000,
       multiplier: { min: 1.7, max: 1.9 },
       buyAmount: 400,
@@ -30,7 +30,7 @@ export const poolData: PoolDataStructure = {
       targetPeople: 10,
     },
     {
-      id: '10m-3000',
+      id: "10m-3000",
       amount: 3000,
       multiplier: { min: 1.6, max: 1.8 },
       buyAmount: 600,
@@ -41,7 +41,7 @@ export const poolData: PoolDataStructure = {
       targetPeople: 10,
     },
     {
-      id: '10m-5000',
+      id: "10m-5000",
       amount: 5000,
       multiplier: { min: 1.5, max: 1.7 },
       buyAmount: 1000,
@@ -54,7 +54,7 @@ export const poolData: PoolDataStructure = {
   ],
   hundredMembers: [
     {
-      id: '100m-10000',
+      id: "100m-10000",
       amount: 10000,
       multiplier: { min: 1.4, max: 1.6 },
       buyAmount: 100,
@@ -65,7 +65,7 @@ export const poolData: PoolDataStructure = {
       targetPeople: 100,
     },
     {
-      id: '100m-20000',
+      id: "100m-20000",
       amount: 20000,
       multiplier: { min: 1.3, max: 1.5 },
       buyAmount: 200,
@@ -76,7 +76,7 @@ export const poolData: PoolDataStructure = {
       targetPeople: 100,
     },
     {
-      id: '100m-30000',
+      id: "100m-30000",
       amount: 30000,
       multiplier: { min: 1.2, max: 1.4 },
       buyAmount: 300,
@@ -87,7 +87,7 @@ export const poolData: PoolDataStructure = {
       targetPeople: 100,
     },
     {
-      id: '100m-50000',
+      id: "100m-50000",
       amount: 50000,
       multiplier: { min: 1.1, max: 1.3 },
       buyAmount: 500,

@@ -124,7 +124,12 @@ const Navbar = () => {
         <div className="container mx-auto px-4 py-3">
           <div className="backdrop-blur-md bg-white/10 rounded-xl shadow-lg border border-white/20 p-4">
             <div className="flex justify-between items-center">
-              <div className="flex">
+              <div
+                className="flex cursor-pointer"
+                onClick={() => {
+                  window.location.href = "/pool";
+                }}
+              >
                 <SparklesText text="Jack" className=" text-white" />
                 <SparklesText text=" dot" className=" text-[#FF0068]" />
               </div>
@@ -139,12 +144,12 @@ const Navbar = () => {
                         : truncateAddress(walletAddress)}
                     </span>
                     <div className="flex items-center space-x-2">
-                      <span className="text-xs text-[#FF0068]">
+                      <span className="text-xs text-[#00FF00]">
                         ${usdcBalance} USDC
                       </span>
-                      <span className="text-xs text-[#00FF00]">
+                      {/* <span className="text-xs text-[#00FF00]">
                         Total Pool Balance {contractBalance} ETH
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                   <Button
