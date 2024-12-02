@@ -1,13 +1,6 @@
-import { PoolData } from "../../data/poolData";
 import InvestmentCard from "@/components/ui/InvestmentCard";
 
-interface PoolSectionProps {
-  title: string;
-  description: string;
-  pools: PoolData[];
-}
-
-function PoolSection({ title, description, pools }: PoolSectionProps) {
+function PoolSection({ title, description, pools }) {
   return (
     <section className="bg-black/20 backdrop-blur-sm rounded-xl p-6">
       <h2 className="text-xl font-semibold text-[#FF0068] mb-2">{title}</h2>

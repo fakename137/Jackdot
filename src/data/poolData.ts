@@ -1,11 +1,11 @@
-import { PoolData } from "@/types/pool";
+// import { PoolData } from "@/types/pool";
 
-interface PoolDataStructure {
-  tenMembers: PoolData[];
-  hundredMembers: PoolData[];
-}
+// interface PoolDataStructure {
+//   tenMembers: PoolData[];
+//   hundredMembers: PoolData[];
+// }
 
-export const poolData: PoolDataStructure = {
+export const PoolData = {
   tenMembers: [
     {
       id: "10m-1000",
