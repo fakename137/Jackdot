@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import PoolFactoryABI from "@/abis/PoolFactory.json";
 import BondingCurvePoolABI from "@/abis/BondingCurvePool.json";
 
-const FACTORY_ADDRESS = "0xCE684c393AD72c592C6fcB2b559bb11FE7a8eBd9";
+const FACTORY_ADDRESS = "0xCE9BD488cf69BCc131308CdFD85c5088D4D48455";
 
 const AdminPanel: React.FC = () => {
   const [provider, setProvider] =
@@ -131,7 +131,7 @@ const AdminPanel: React.FC = () => {
           <input
             type="text"
             name="totalPoolLimit"
-            placeholder="Total Pool Limit (ETH)"
+            placeholder="Total Pool Limit (USD)"
             value={formData.totalPoolLimit}
             onChange={handleInputChange}
             className="p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -147,7 +147,7 @@ const AdminPanel: React.FC = () => {
           <input
             type="number"
             name="winner"
-            placeholder="Winner"
+            placeholder="Total Winners"
             value={formData.winner}
             onChange={handleInputChange}
             className="p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -175,10 +175,10 @@ const AdminPanel: React.FC = () => {
                 <span className="text-[#FF0068]">{pool.address}</span>
               </h3>
               <p className="text-sm text-gray-300">
-                <strong>Balance:</strong> {pool.poolBalance} ETH
+                <strong>Balance:</strong> {pool.poolBalance} USD
               </p>
               <p className="text-sm text-gray-300">
-                <strong>Total Limit:</strong> {pool.totalPoolLimit} ETH
+                <strong>Total Limit:</strong> {pool.totalPoolLimit} USD
               </p>
               <p className="text-sm text-gray-300">
                 <strong>Participants:</strong> {pool.totalParticipants}
