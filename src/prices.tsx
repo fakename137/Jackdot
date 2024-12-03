@@ -10,6 +10,7 @@ interface ContractABI {
   getTotalParticipants: () => Promise<number>;
   getTotalPoolLimit: () => Promise<number>;
   getOrganizerFeePercentage: () => Promise<number>;
+  getPoolBalance: () => Promise<number>;
 }
 
 // Price Calculation Function
@@ -470,7 +471,6 @@ const PriceFetcher: React.FC = () => {
           contractABI,
           signer
         ) as unknown as ContractABI;
-
         // Fetch contract parameters
         const totalParticipants = await contract.getTotalParticipants();
         const totalPoolLimit = await contract.getPoolBalance();
