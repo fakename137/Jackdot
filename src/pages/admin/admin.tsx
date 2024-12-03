@@ -121,20 +121,20 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
+    <div className="p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
+      <h1 className="text-3xl font-bold mb-8 text-center">Admin Panel</h1>
 
       {/* Create Pool Section */}
-      <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h2 className="text-xl font-semibold mb-4">Create New Pool</h2>
-        <div className="grid gap-4">
+      <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg mb-8 border border-white/20">
+        <h2 className="text-2xl font-semibold mb-6">Create New Pool</h2>
+        <div className="grid gap-6">
           <input
             type="text"
             name="totalPoolLimit"
             placeholder="Total Pool Limit (ETH)"
             value={formData.totalPoolLimit}
             onChange={handleInputChange}
-            className="p-2 border rounded-lg"
+            className="p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="number"
@@ -142,7 +142,7 @@ const AdminPanel: React.FC = () => {
             placeholder="Total Participants"
             value={formData.totalParticipants}
             onChange={handleInputChange}
-            className="p-2 border rounded-lg"
+            className="p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="number"
@@ -150,11 +150,11 @@ const AdminPanel: React.FC = () => {
             placeholder="Winner"
             value={formData.winner}
             onChange={handleInputChange}
-            className="p-2 border rounded-lg"
+            className="p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
             onClick={createPool}
-            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+            className="py-3 px-6 rounded-lg bg-[#FF0068] hover:bg-[rgb(255,84,153)] text-white font-medium transition duration-300"
           >
             Create Pool
           </button>
@@ -163,22 +163,32 @@ const AdminPanel: React.FC = () => {
 
       {/* Pools List Section */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">All Pools</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">All Pools</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {pools.map((pool, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-lg font-semibold">
-                Pool Address: {pool.address}
+            <div
+              key={index}
+              className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/20"
+            >
+              <h3 className="text-lg font-semibold mb-4">
+                Pool Address:{" "}
+                <span className="text-[#FF0068]">{pool.address}</span>
               </h3>
-              <p className="text-gray-600">Balance: {pool.poolBalance} ETH</p>
-              <p className="text-gray-600">
-                Total Limit: {pool.totalPoolLimit}
+              <p className="text-sm text-gray-300">
+                <strong>Balance:</strong> {pool.poolBalance} ETH
               </p>
-              <p className="text-gray-600">
-                Participants: {pool.totalParticipants}
+              <p className="text-sm text-gray-300">
+                <strong>Total Limit:</strong> {pool.totalPoolLimit} ETH
               </p>
-              <p className="text-gray-600">Winner: {pool.winner}</p>
-              <p className="text-gray-600">Owner: {pool.owner}</p>
+              <p className="text-sm text-gray-300">
+                <strong>Participants:</strong> {pool.totalParticipants}
+              </p>
+              <p className="text-sm text-gray-300">
+                <strong>Winner:</strong> {pool.winner}
+              </p>
+              <p className="text-sm text-gray-300">
+                <strong>Owner:</strong> {pool.owner}
+              </p>
             </div>
           ))}
         </div>
