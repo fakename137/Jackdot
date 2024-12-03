@@ -121,14 +121,14 @@ function Pool() {
       <Navbar />
       <main className="pt-40 container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-white mb-2">
               Cryptocurrency Investment Pools
             </h1>
             <p className="text-gray-400">
               Discover high-yield opportunities across multiple cryptocurrencies
             </p>
-          </div>
+          </div> */}
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {pools.map((pool) => (

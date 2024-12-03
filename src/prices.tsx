@@ -473,7 +473,7 @@ const PriceFetcher: React.FC = () => {
 
         // Fetch contract parameters
         const totalParticipants = await contract.getTotalParticipants();
-        const totalPoolLimit = await contract.getTotalPoolLimit();
+        const totalPoolLimit = await contract.getPoolBalance();
         const organizerFeePercentage =
           await contract.getOrganizerFeePercentage();
 
