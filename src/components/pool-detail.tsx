@@ -9,7 +9,7 @@ import Navbar from "./navbar";
 import { LineData } from "lightweight-charts";
 import { getAllPrices } from "../data/getallPrices";
 import { usePrivy } from "@privy-io/react-auth";
-import GrillChat from "./Chat/GrillChat";
+// import GrillChat from "./Chat/GrillChat";
 import PriceFetcher from "@/prices";
 const MotionCard = motion(Card);
 
@@ -200,9 +200,9 @@ export default function PoolDetail() {
       </div>
 
       {/* Positioned GrillChat component */}
-      <div className="absolute bottom-0 right-0 p-4 z-[100]">
+      {/* <div className="absolute bottom-0 right-0 p-4 z-[100]">
         <GrillChat />
-      </div>
+      </div> */}
     </>
   );
 }
