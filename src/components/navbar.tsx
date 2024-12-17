@@ -7,6 +7,7 @@ import { Wallet, LogOut, Copy, DollarSign } from "lucide-react";
 import { useState, useEffect } from "react";
 import SparklesText from "./ui/sparkles-text";
 import Abi from "../../abi.json";
+import DevTokenBalance from "./devtoken";
 // Contract ABI (minimal version for checkContractBalance)
 const CONTRACT_ABI = Abi;
 const USDC_ABI = [
@@ -145,7 +146,9 @@ const Navbar = () => {
                     </span>
                     <div className="flex items-center space-x-2">
                       <span className="text-xs text-[#00FF00]">
-                        ${usdcBalance} USDC
+                        {/* ${usdcBalance}  */}
+
+                        <DevTokenBalance />
                       </span>
                       {/* <span className="text-xs text-[#00FF00]">
                         Total Pool Balance {contractBalance} ETH

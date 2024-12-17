@@ -18,13 +18,59 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <PrivyProvider
       appId="cm40v396h0bwt10cj0m54h0fe"
       config={{
+        supportedChains: [
+          {
+            id: 1287, // Moonbase Alpha testnet chain ID
+            name: "Moonbase Alpha",
+            nativeCurrency: {
+              name: "DEV",
+              symbol: "DEV",
+              decimals: 18,
+            },
+            rpcUrls: {
+              default: {
+                http: ["https://rpc.api.moonbase.moonbeam.network"],
+              },
+            },
+            blockExplorers: {
+              default: {
+                name: "Moonbase Alpha Explorer",
+                url: "https://moonbase.moonscan.io",
+              },
+            },
+            testnet: true,
+          },
+        ],
+        defaultChain: {
+          id: 1287,
+          name: "Moonbase Alpha",
+          nativeCurrency: {
+            name: "DEV",
+            symbol: "DEV",
+            decimals: 18,
+          },
+          rpcUrls: {
+            default: {
+              http: ["https://rpc.api.moonbase.moonbeam.network"],
+            },
+            // You can add additional RPC URLs if needed
+          },
+          blockExplorers: {
+            default: {
+              name: "Moonbase Alpha Explorer",
+              url: "https://moonbase.moonscan.io",
+            },
+          },
+          testnet: true,
+        },
+
         // Display email and wallet as login methods
         loginMethods: ["email", "wallet", "google"],
         // Customize Privy's appearance in your app
         appearance: {
           theme: "light",
           accentColor: "#676FFF",
-          logo: "https://your-logo-url",
+          logo: "/logo.png",
         },
         // Create embedded wallets for users who don't have a wallet
         embeddedWallets: {
