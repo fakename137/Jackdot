@@ -8,9 +8,8 @@ import Abi from "../abi.json";
 // ABI Type Definition
 interface ContractABI {
   getTotalParticipants: () => Promise<number>;
-  getTotalPoolLimit: () => Promise<number>;
-  getOrganizerFeePercentage: () => Promise<number>;
   getPoolBalance: () => Promise<number>;
+  getOrganizerFeePercentage: () => Promise<number>;
 }
 
 // Price Calculation Function
